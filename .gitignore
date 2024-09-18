@@ -3,3 +3,5 @@
 cache/
 .chainlit/
 chainlit-demo/
+__pycache__/
+*.pyc
