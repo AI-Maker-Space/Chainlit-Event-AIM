@@ -1,0 +1,5 @@
+.env
+.files/
+cache/
+.chainlit/
+chainlit-demo/
