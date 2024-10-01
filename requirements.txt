@@ -103,7 +103,7 @@ PyMuPDFb==1.24.10
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-engineio==4.9.1
-python-multipart==0.0.9
+python-multipart==0.0.6
 python-socketio==5.11.4
 PyYAML==6.0.2
 pyzmq==26.2.0
