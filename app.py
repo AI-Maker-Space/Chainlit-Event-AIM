@@ -16,8 +16,6 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables.passthrough import RunnablePassthrough
 from langchain_core.runnables.config import RunnableConfig
 from dotenv import load_dotenv
-from langchain_core.globals import set_llm_cache
-from langchain_core.caches import InMemoryCache
 import uuid
 
 load_dotenv()
@@ -66,7 +64,6 @@ def process_file(file: AskFileResponse):
 # Decorator: This is a Chainlit decorator that marks a function to be executed when a chat session starts
 @cl.on_chat_start
 async def on_chat_start():
-    set_llm_cache(InMemoryCache())
     files = None
 
     # Wait for the user to upload a file
