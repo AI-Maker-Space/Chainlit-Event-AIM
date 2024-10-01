@@ -1,3 +1,13 @@
+---
+title: DeployProductionRAG
+emoji: 📉
+colorFrom: blue
+colorTo: purple
+sdk: docker
+pinned: false
+license: apache-2.0
+---
+
 # Creating a ChatWithYourPDF App using Chainlit and LangChain!
 
 ### Launching the Chainlit Application Locally
