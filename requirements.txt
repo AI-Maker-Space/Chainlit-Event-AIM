@@ -24,7 +24,7 @@ Deprecated==1.2.14
 distro==1.9.0
 docopt==0.6.2
 executing==2.1.0
-fastapi==0.112.4
+fastapi==0.100
 fastjsonschema==2.20.0
 filetype==1.2.0
 frozenlist==1.4.1
