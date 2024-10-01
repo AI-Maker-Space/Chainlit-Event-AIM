@@ -16,9 +16,12 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables.passthrough import RunnablePassthrough
 from langchain_core.runnables.config import RunnableConfig
 from dotenv import load_dotenv
+from langchain_core.globals import set_llm_cache
+from langchain_core.caches import InMemoryCache
 import uuid
 
 load_dotenv()
+
 
 text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
 
@@ -45,9 +48,15 @@ chat_prompt = ChatPromptTemplate.from_messages([
 chat_model = ChatOpenAI(model="gpt-4o-mini")
 
 def process_file(file: AskFileResponse):
+    import tempfile
+
+    with tempfile.NamedTemporaryFile(mode="w", delete=False) as tempfile:
+        with open(tempfile.name, "wb") as f:
+            f.write(file.content)
+
     Loader = PyMuPDFLoader
 
-    loader = Loader(file.path)
+    loader = Loader(tempfile.name)
     documents = loader.load()
     docs = text_splitter.split_documents(documents)
     for i, doc in enumerate(docs):
@@ -57,6 +66,7 @@ def process_file(file: AskFileResponse):
 # Decorator: This is a Chainlit decorator that marks a function to be executed when a chat session starts
 @cl.on_chat_start
 async def on_chat_start():
+    set_llm_cache(InMemoryCache())
     files = None
 
     # Wait for the user to upload a file
