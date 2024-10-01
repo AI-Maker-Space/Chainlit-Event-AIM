@@ -131,7 +131,7 @@ typing-inspect==0.9.0
 typing_extensions==4.12.2
 uptrace==1.26.0
 urllib3==2.2.3
-uvicorn==0.25.0
+uvicorn==0.23.2
 watchfiles==0.20.0
 wcwidth==0.2.13
 webencodings==0.5.1
